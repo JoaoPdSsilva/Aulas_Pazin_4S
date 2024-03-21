@@ -16,6 +16,11 @@ public class Compra {
     private  Cliente cliente;
     private List<ItensComprados> itens;
 
+
+
+
+
+
     public Integer getId() {
         return id;
     }
@@ -49,6 +54,10 @@ public class Compra {
    }
 
    public double calcularValorFinal(){
+        double  valorCompra = 0.0;
+       for(ItensComprados item:itens){
+           valorCompra += item.getQuantidade() * item.getValor();
+       }
         return 0.0;
    }
 

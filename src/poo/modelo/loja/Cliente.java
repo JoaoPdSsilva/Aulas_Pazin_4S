@@ -2,7 +2,9 @@ package poo.modelo.loja;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Cliente extends Usuario{
@@ -40,8 +42,21 @@ public class Cliente extends Usuario{
     }
 
     public int calcularIdade(){
+            if(this.dataNascimento != null) {
+                Calendar dataNasc = new GregorianCalendar();
+                dataNasc.setTime(this.dataNascimento);
+                Calendar dataAtual = Calendar.getInstance();
 
-        return 0;
+                int idade = dataAtual.get(Calendar.YEAR) - dataNasc.get(Calendar.YEAR);
+                    dataNasc.add(Calendar.YEAR, idade);
+
+                    if(dataAtual.before(dataNasc)){
+                        idade--;
+                    }
+                    return idade;
+            } else {
+                return 0;
+            }
     }
 
 }

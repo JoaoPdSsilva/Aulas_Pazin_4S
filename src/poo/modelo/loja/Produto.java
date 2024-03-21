@@ -1,5 +1,6 @@
 package poo.modelo.loja;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Produto {
@@ -101,8 +102,14 @@ public class Produto {
         this.secao = secao;
     }
 
-    public List<Produto> pesquisarProdutosBaixoEstoque(){
-        return  null;
+    public List<Produto> pesquisarProdutosBaixoEstoque(List<Produto> listaEstoque){
+        List<Produto> listaBaixoEstoque = new ArrayList<>();
+        for(Produto prod:listaEstoque)
+        {
+            if(prod.getEstoqueMinimo() > prod.getQtdeEstoque()){
+                listaBaixoEstoque.add(prod);
+            }
+        }
+        return  listaBaixoEstoque;
     }
-
 }
